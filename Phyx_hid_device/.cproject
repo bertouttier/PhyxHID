@@ -39,7 +39,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/phyx_11u35_board_lib/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lpc_chip_11uxx_lib/inc/usbd}&quot;"/>
 								</option>
-								<option id="gnu.c.compiler.option.include.files.130500129" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" valueType="includeFiles"/>
+								<option id="gnu.c.compiler.option.include.files.130500129" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files"/>
 								<option id="gnu.c.compiler.option.preprocessor.undef.symbol.426212385" name="Undefined symbols (-U)" superClass="gnu.c.compiler.option.preprocessor.undef.symbol"/>
 								<inputType id="com.crt.advproject.compiler.input.191506066" superClass="com.crt.advproject.compiler.input"/>
 							</tool>

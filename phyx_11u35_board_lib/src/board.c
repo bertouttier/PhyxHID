@@ -38,9 +38,9 @@
 #define SetBit(port, bit) port|= (1<<bit)
 #define ClearBit(port, bit) port&= ~(1<<bit)
 #define BUTTONS_ENCA_GPIO_PORT_NUM			0
-#define BUTTONS_ENCA_GPIO_BIT_NUM			4
+#define BUTTONS_ENCA_GPIO_BIT_NUM			6
 #define BUTTONS_ENCB_GPIO_PORT_NUM			0
-#define BUTTONS_ENCB_GPIO_BIT_NUM			5
+#define BUTTONS_ENCB_GPIO_BIT_NUM			7
 #define BUTTONS_ENCC_GPIO_PORT_NUM			0
 #define BUTTONS_ENCC_GPIO_BIT_NUM			1
 #define RIGHT_SPIN 							0x01
@@ -121,14 +121,22 @@ void Poll_Buttons(void)
 	uint8_t currentState = 0;
 
 	//check state of pins
-	if (Chip_GPIO_GetPinState(LPC_GPIO, BUTTONS_ENCA_GPIO_PORT_NUM, BUTTONS_ENCA_GPIO_BIT_NUM))
+	if (!Chip_GPIO_GetPinState(LPC_GPIO, BUTTONS_ENCA_GPIO_PORT_NUM, BUTTONS_ENCA_GPIO_BIT_NUM))
 	{
 		SetBit(currentState,0);
 	}
+	else
+	{
+		tmp = 0;
+	}
 
-	if (Chip_GPIO_GetPinState(LPC_GPIO, BUTTONS_ENCC_GPIO_PORT_NUM, BUTTONS_ENCC_GPIO_BIT_NUM))
+	if (!Chip_GPIO_GetPinState(LPC_GPIO, BUTTONS_ENCB_GPIO_PORT_NUM, BUTTONS_ENCB_GPIO_BIT_NUM))
 	{
 		SetBit(currentState,1);
+	}
+	else
+	{
+		tmp = 0;
 	}
 
 	tmp = stateEnc;
@@ -137,8 +145,20 @@ void Poll_Buttons(void)
 	tmp = (tmp<<2)|currentState;
 	stateEnc = tmp;
 
-	if (tmp == 0xE1) bufEnc = LEFT_SPIN; //11100001b
-	if (tmp == 0xD2) bufEnc = RIGHT_SPIN; //11010010b
+	tmp = (tmp & 0x0F);
+
+	if(tmp == 0x0B) bufEnc = LEFT_SPIN;
+	if(tmp == 0x0D) bufEnc = LEFT_SPIN;
+	if(tmp == 0x04) bufEnc = LEFT_SPIN;
+	if(tmp == 0x02) bufEnc = LEFT_SPIN;
+
+	if(tmp == 0x01) bufEnc = RIGHT_SPIN;
+	if(tmp == 0x07) bufEnc = RIGHT_SPIN;
+	if(tmp == 0x0E) bufEnc = RIGHT_SPIN;
+	if(tmp == 0x08) bufEnc = RIGHT_SPIN;
+
+	//if (tmp == 0xE1) bufEnc = LEFT_SPIN; //11100001b
+	//if (tmp == 0xD2) bufEnc = RIGHT_SPIN; //11010010b
 	return;
 }
 

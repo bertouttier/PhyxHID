@@ -74,15 +74,15 @@ static void Keyboard_UpdateReport(void)
 	switch (button_status)
 	{
 		case BUTTONS_LEFT:
-			HID_KEYBOARD_REPORT_SET_KEY_PRESS(g_keyBoard.report, 0x80);
+			HID_KEYBOARD_REPORT_SET_KEY_PRESS(g_keyBoard.report, 0x81); //0x80
 			break;
 
 		case BUTTONS_RIGHT:
-			HID_KEYBOARD_REPORT_SET_KEY_PRESS(g_keyBoard.report, 0x81);
+			HID_KEYBOARD_REPORT_SET_KEY_PRESS(g_keyBoard.report, 0x80); //0x81
 			break;
 
 		case BUTTONS_ENCC:
-			HID_KEYBOARD_REPORT_SET_KEY_PRESS(g_keyBoard.report, 0x7F);
+			HID_KEYBOARD_REPORT_SET_KEY_PRESS(g_keyBoard.report, 0x7F); //0x7F
 			break;
 	}
 }
