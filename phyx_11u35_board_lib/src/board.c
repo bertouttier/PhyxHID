@@ -125,18 +125,10 @@ void Poll_Buttons(void)
 	{
 		SetBit(currentState,0);
 	}
-	else
-	{
-		tmp = 0;
-	}
 
 	if (!Chip_GPIO_GetPinState(LPC_GPIO, BUTTONS_ENCB_GPIO_PORT_NUM, BUTTONS_ENCB_GPIO_BIT_NUM))
 	{
 		SetBit(currentState,1);
-	}
-	else
-	{
-		tmp = 0;
 	}
 
 	tmp = stateEnc;
@@ -157,8 +149,6 @@ void Poll_Buttons(void)
 	if(tmp == 0x0E) bufEnc = RIGHT_SPIN;
 	if(tmp == 0x08) bufEnc = RIGHT_SPIN;
 
-	//if (tmp == 0xE1) bufEnc = LEFT_SPIN; //11100001b
-	//if (tmp == 0xD2) bufEnc = RIGHT_SPIN; //11010010b
 	return;
 }
 
