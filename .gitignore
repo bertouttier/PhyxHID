@@ -3,3 +3,7 @@ Phyx_hid_device/Debug/Phyx_hid_device.map
 Phyx_hid_device/Debug/Phyx_hid_device_Debug.ld
 Phyx_hid_device/Debug/Phyx_hid_device_Debug_lib.ld
 Phyx_hid_device/Debug/Phyx_hid_device_Debug_mem.ld
+.metadata
+lpc_chip_11uxx_lib/Debug
+phyx_11u35_board_lib/Debug
+Phyx_hid_device/Debug
